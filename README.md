@@ -1,5 +1,7 @@
 # Telica block theme
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 Unlock Your Creativity with Our Versatile Block-Based WordPress Theme for
 Stunning Website Development!
 
@@ -12,7 +14,16 @@ Outstanding Tourism Websites.
 2. Install WordPress.
 3. Activate this theme in the WordPress admin panel.
 
-## Usage
+## Requirements
+
+Local Enviroment:
+
+- [Local WP](https://localwp.com/)
+- [VS Code](https://code.visualstudio.com/)
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [PNPM](https://pnpm.io/)
+- [Composer](https://getcomposer.org/)
 
 ## Contributing to Telica block theme
 
