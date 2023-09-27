@@ -10,7 +10,7 @@ Outstanding Tourism Websites.
 
 ## Installation
 
-1. Clone this repository: `git clone [repository URL]`
+1. Clone this repository: `git clone https://github.com/Modern-WPress/telica-block-theme`
 2. Install WordPress.
 3. Activate this theme in the WordPress admin panel.
 
