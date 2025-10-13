@@ -1,11 +1,4 @@
 <?php
-function telica_register_blocks() {
-    register_block_type( __DIR__ . '/blocks/hero' );
-}
-add_action( 'init', 'telica_register_blocks' );
-
-
-
 function telica_register_block_patterns() {
     register_block_pattern_category(
         'featured',
