@@ -31,3 +31,14 @@
 .equal-cards .card .wp-block-buttons {
   justify-content: flex-start;
 }
+
+/* CTA primary button: green background */
+.btn-green .wp-block-button__link {
+  background-color: #16a34a; /* green */
+  color: #ffffff;
+}
+.btn-green .wp-block-button__link:hover,
+.btn-green .wp-block-button__link:focus {
+  background-color: #15803d; /* darker green */
+  color: #ffffff;
+}

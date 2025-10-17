@@ -24,6 +24,16 @@ function telica_register_block_patterns() {
             'content'     => file_get_contents( get_template_directory() . '/patterns/three-columns-cards.php' ),
         )
     );
+
+    register_block_pattern(
+        'telica/cta',
+        array(
+            'title'       => __( 'CTA', 'telica' ),
+            'description' => _x( 'Call to action with left text and two buttons on the right.', 'Pattern description', 'telica' ),
+            'categories'  => array( 'featured' ),
+            'content'     => file_get_contents( get_template_directory() . '/patterns/cta.php' ),
+        )
+    );
 }
 add_action( 'init', 'telica_register_block_patterns' );
 
