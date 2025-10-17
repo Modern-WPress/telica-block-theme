@@ -1,0 +1,33 @@
+/* Equal-height helpers for columns/cards */
+.equal-cards.wp-block-columns {
+  align-items: stretch;
+}
+.equal-cards .wp-block-column {
+  display: flex;
+}
+.equal-cards .wp-block-column > .wp-block-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.equal-cards .wp-block-column > .wp-block-group.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Card styling (moved from inline to classes) */
+.equal-cards .card {
+  border: 1px solid #000;
+  padding-top: var(--wp--preset--spacing--50);
+  padding-right: var(--wp--preset--spacing--50);
+  padding-bottom: var(--wp--preset--spacing--50);
+  padding-left: var(--wp--preset--spacing--50);
+  text-align: left;
+}
+
+/* Ensure buttons row aligns left inside cards */
+.equal-cards .card .wp-block-buttons {
+  justify-content: flex-start;
+}
