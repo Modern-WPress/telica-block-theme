@@ -4,6 +4,10 @@ function telica_register_block_patterns() {
         'featured',
         array( 'label' => __( 'Featured', 'telica' ) )
     );
+    register_block_pattern_category(
+        'call-to-action',
+        array( 'label' => __( 'Call to Action', 'telica' ) )
+    );
 
     register_block_pattern(
         'telica/hero-block',
@@ -34,6 +38,19 @@ function telica_register_block_patterns() {
             'content'     => file_get_contents( get_template_directory() . '/patterns/cta.php' ),
         )
     );
+
+    // Author Box pattern
+    if ( file_exists( get_template_directory() . '/patterns/author-box.php' ) ) {
+        register_block_pattern(
+            'telica/author-box',
+            array(
+                'title'       => __( 'Author Box', 'telica' ),
+                'description' => _x( 'Box with image, text, and social icons.', 'Pattern description', 'telica' ),
+                'categories'  => array( 'call-to-action' ),
+                'content'     => file_get_contents( get_template_directory() . '/patterns/author-box.php' ),
+            )
+        );
+    }
 
     // Load portfolio pattern and replace placeholder with theme URI so editor gets real URLs.
     $portfolio_content = file_get_contents( get_template_directory() . '/patterns/portfolio.php' );
