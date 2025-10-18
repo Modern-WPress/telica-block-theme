@@ -56,3 +56,4 @@ function telica_enqueue_editor_assets() {
     add_editor_style( 'assets/css/components.css' );
 }
 add_action( 'after_setup_theme', 'telica_enqueue_editor_assets' );
+
