@@ -34,6 +34,21 @@ function telica_register_block_patterns() {
             'content'     => file_get_contents( get_template_directory() . '/patterns/cta.php' ),
         )
     );
+
+    // Load portfolio pattern and replace placeholder with theme URI so editor gets real URLs.
+    $portfolio_content = file_get_contents( get_template_directory() . '/patterns/portfolio.php' );
+    if ( false !== $portfolio_content ) {
+        $portfolio_content = str_replace( '%%THEME_URI%%', esc_url( get_stylesheet_directory_uri() ), $portfolio_content );
+        register_block_pattern(
+            'telica/portfolio',
+            array(
+                'title'       => __( 'Portfolio', 'telica' ),
+                'description' => _x( 'Portfolio with heading, text, and images.', 'Pattern description', 'telica' ),
+                'categories'  => array( 'featured' ),
+                'content'     => $portfolio_content,
+            )
+        );
+    }
 }
 add_action( 'init', 'telica_register_block_patterns' );
 
