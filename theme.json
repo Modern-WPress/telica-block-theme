@@ -21,26 +21,13 @@
     },
     "color": {
       "palette": [
-        {
-          "slug": "primary",
-          "name": "Primary",
-          "color": "#1e40af"
-        },
-        {
-          "slug": "contrast",
-          "name": "Contrast",
-          "color": "#ffffff"
-        },
-        {
-          "slug": "background",
-          "name": "Background",
-          "color": "#f5f5f5"
-        },
-        {
-          "slug": "text",
-          "name": "Text",
-          "color": "#111111"
-        }
+        { "slug": "primary", "name": "Primary", "color": "#1e40af" },
+        { "slug": "contrast", "name": "Contrast", "color": "#ffffff" },
+        { "slug": "background", "name": "Background", "color": "#f5f5f5" },
+        { "slug": "text", "name": "Text", "color": "#111111" },
+        { "slug": "black", "name": "Black", "color": "#000000" },
+        { "slug": "white", "name": "White", "color": "#ffffff" },
+        { "slug": "light-green-cyan", "name": "Light Green Cyan", "color": "#7bdcb5" }
       ]
     },
     "useRootPaddingAwareAlignments": true

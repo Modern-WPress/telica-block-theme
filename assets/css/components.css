@@ -31,3 +31,11 @@
 .equal-cards .card .wp-block-buttons {
   justify-content: flex-start;
 }
+
+/* CTA: no color overrides here. Colors are controlled via block attributes (palette) in the pattern/editor. */
+
+/* CTA defaults: white text on black container (editable: block colors will override) */
+.cta {
+  color: var(--wp--preset--color--white);
+}
+.cta a { color: var(--wp--preset--color--white); }

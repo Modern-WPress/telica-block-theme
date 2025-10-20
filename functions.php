@@ -4,6 +4,10 @@ function telica_register_block_patterns() {
         'featured',
         array( 'label' => __( 'Featured', 'telica' ) )
     );
+    register_block_pattern_category(
+        'call-to-action',
+        array( 'label' => __( 'Call to Action', 'telica' ) )
+    );
 
     register_block_pattern(
         'telica/hero-block',
@@ -24,6 +28,44 @@ function telica_register_block_patterns() {
             'content'     => file_get_contents( get_template_directory() . '/patterns/three-columns-cards.php' ),
         )
     );
+
+    register_block_pattern(
+        'telica/cta',
+        array(
+            'title'       => __( 'CTA', 'telica' ),
+            'description' => _x( 'Call to action with left text and two buttons on the right.', 'Pattern description', 'telica' ),
+            'categories'  => array( 'featured' ),
+            'content'     => file_get_contents( get_template_directory() . '/patterns/cta.php' ),
+        )
+    );
+
+    // Author Box pattern
+    if ( file_exists( get_template_directory() . '/patterns/author-box.php' ) ) {
+        register_block_pattern(
+            'telica/author-box',
+            array(
+                'title'       => __( 'Author Box', 'telica' ),
+                'description' => _x( 'Box with image, text, and social icons.', 'Pattern description', 'telica' ),
+                'categories'  => array( 'call-to-action' ),
+                'content'     => file_get_contents( get_template_directory() . '/patterns/author-box.php' ),
+            )
+        );
+    }
+
+    // Load portfolio pattern and replace placeholder with theme URI so editor gets real URLs.
+    $portfolio_content = file_get_contents( get_template_directory() . '/patterns/portfolio.php' );
+    if ( false !== $portfolio_content ) {
+        $portfolio_content = str_replace( '%%THEME_URI%%', esc_url( get_stylesheet_directory_uri() ), $portfolio_content );
+        register_block_pattern(
+            'telica/portfolio',
+            array(
+                'title'       => __( 'Portfolio', 'telica' ),
+                'description' => _x( 'Portfolio with heading, text, and images.', 'Pattern description', 'telica' ),
+                'categories'  => array( 'featured' ),
+                'content'     => $portfolio_content,
+            )
+        );
+    }
 }
 add_action( 'init', 'telica_register_block_patterns' );
 
@@ -46,3 +88,4 @@ function telica_enqueue_editor_assets() {
     add_editor_style( 'assets/css/components.css' );
 }
 add_action( 'after_setup_theme', 'telica_enqueue_editor_assets' );
+
