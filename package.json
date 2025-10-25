@@ -1,0 +1,19 @@
+{
+  "name": "telica",
+  "version": "1.0.0",
+  "description": "FSE WordPress Theme development integration with yarn",
+  "main": "/asssets/js/main.js",
+  "repository": "https://github.com/Modern-WPress/telica-block-theme",
+  "author": "Modern WPress",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.21",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.16",
+    "vite": "7.1.12"
+  }
+}
