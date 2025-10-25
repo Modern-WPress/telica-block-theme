@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package WordPress
- * @subpackage telica-wpress
- * @since telica-wpress 1.1
+ * @subpackage Telica 1.1
+ * @since Telica 1.1
  */
 
 // Adds theme support for post formats.
@@ -14,7 +14,7 @@ if ( ! function_exists( 'telica_post_format_setup' ) ) :
 	/**
 	 * Adds theme support for post formats.
 	 *
-	 * @since telica-wpress 1.1
+	 * @since Telica 1.1
 	 *
 	 * @return void
 	 */
@@ -23,6 +23,41 @@ if ( ! function_exists( 'telica_post_format_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'telica_post_format_setup' );
+
+// Enqueues editor-style.css in the editors.
+if ( ! function_exists( 'telica_editor_style' ) ) :
+	/**
+	 * Enqueues editor-style.css in the editors.
+	 *
+	 * @since Telica 1.1
+	 *
+	 * @return void
+	 */
+	function telica_editor_style() {
+		add_editor_style( 'assets/css/editor-style.css' );
+	}
+endif;
+add_action( 'after_setup_theme', 'telica_editor_style' );
+
+// Enqueues style.css on the front.
+if ( ! function_exists( 'telica_enqueue_styles' ) ) :
+	/**
+	 * Enqueues style.css on the front.
+	 *
+	 * @since Telica 1.1
+	 *
+	 * @return void
+	 */
+	function telica_enqueue_styles() {
+		wp_enqueue_style(
+			'me-studio-style',
+			get_parent_theme_file_uri( 'style.css' ),
+			array(),
+			wp_get_theme()->get( 'Version' )
+		);
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'telica_enqueue_styles' );
 
 
 function telica_register_block_patterns() {
