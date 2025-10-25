@@ -13,3 +13,78 @@ Text Domain: telica-wpress
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, blog, portfolio
 */
 
+/* style.css */
+body {
+  font-family: var(--wp--preset--font-family--open-sans);
+}
+
+a {
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 0.1em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wp-site-blocks > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* Focus styles */
+:where(.wp-site-blocks *:focus) {
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+/* Increase the bottom margin on submenus, so that the outline is visible. */
+.wp-block-navigation
+  .wp-block-navigation-submenu
+  .wp-block-navigation-item:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
+.wp-block-navigation
+  .wp-block-navigation-item
+  .wp-block-navigation-item__content {
+  outline-offset: 4px;
+}
+
+/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
+.wp-block-navigation
+  .wp-block-navigation-item
+  ul.wp-block-navigation__submenu-container
+  .wp-block-navigation-item__content {
+  outline-offset: 0;
+}
+
+/*
+  * Progressive enhancement to reduce widows and orphans
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+caption,
+figcaption,
+p {
+  text-wrap: pretty;
+}
+
+/*
+ * Change the position of the more block on the front, by making it a block level element.
+*/
+.more-link {
+  display: block;
+}
+
+.wp-block-navigation
+  .wp-block-navigation-item__content.wp-block-navigation-item__content {
+  color: var(--wp--preset--color--accent) !important;
+}

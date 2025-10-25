@@ -1,4 +1,30 @@
 <?php
+/**
+ * Telica Theme functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package WordPress
+ * @subpackage telica-wpress
+ * @since telica-wpress 1.1
+ */
+
+// Adds theme support for post formats.
+if ( ! function_exists( 'telica_post_format_setup' ) ) :
+	/**
+	 * Adds theme support for post formats.
+	 *
+	 * @since telica-wpress 1.1
+	 *
+	 * @return void
+	 */
+	function telica_post_format_setup() {
+		add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
+	}
+endif;
+add_action( 'after_setup_theme', 'telica_post_format_setup' );
+
+
 function telica_register_block_patterns() {
     register_block_pattern_category(
         'featured',
@@ -88,4 +114,3 @@ function telica_enqueue_editor_assets() {
     add_editor_style( 'assets/css/components.css' );
 }
 add_action( 'after_setup_theme', 'telica_enqueue_editor_assets' );
-
