@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+  --font-primary: var(--wp--preset--font-family--open-sans);
+
+  --color-primary: var(--wp-preset--color--primary);
+  --color-secondary: var(--wp-preset--color--secondary);
+  --color-accent: var(--wp-preset--color--light-green-cyan);
+  --color-background: var(--wp-preset--color--background);
+  --color-text: var(--wp-preset--color--text);
+}
+
+main.wp-block-group-is-layout-constrained {
+  margin-top: 0 !important;
+}

@@ -7,7 +7,8 @@
   "author": "Modern WPress",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --mode development",
+    "serve": "vite",
     "build": "vite build"
   },
   "devDependencies": {

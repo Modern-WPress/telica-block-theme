@@ -35,29 +35,92 @@ if ( ! function_exists( 'telica_editor_style' ) ) :
 	 */
 	function telica_editor_style() {
 		add_editor_style( 'assets/css/editor-style.css' );
+    add_editor_style( 'assets/css/components.css' );
 	}
 endif;
 add_action( 'after_setup_theme', 'telica_editor_style' );
 
 // Enqueues style.css on the front.
-if ( ! function_exists( 'telica_enqueue_styles' ) ) :
-	/**
-	 * Enqueues style.css on the front.
-	 *
-	 * @since Telica 1.1
-	 *
-	 * @return void
-	 */
-	function telica_enqueue_styles() {
-		wp_enqueue_style(
-			'me-studio-style',
-			get_parent_theme_file_uri( 'style.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
+if ( ! function_exists( 'telica_enqueue_assets' ) ) :
+  /**
+   * Enqueue assets built by Vite.
+   *
+   * @since Telica 1.2
+   */
+  function telica_enqueue_assets() {
+    $theme_dir = get_template_directory();
+		$theme_uri = get_template_directory_uri();
+		$dist_path = $theme_dir . '/dist';
+		$dist_uri  = $theme_uri . '/dist';
+		$version   = wp_get_theme()->get( 'Version' );
+
+    $dev_mode = file_exists( $dist_path . '/assets/css/style.css' );
+
+    $path = get_template_directory() . '/assets/css/components.css';
+    $uri  = get_template_directory_uri() . '/assets/css/components.css';
+
+    if ( file_exists( $path ) ) {
+        $ver = filemtime( $path );
+        wp_enqueue_style( 'telica-components', $uri, array(), $ver );
+    }
+
+    if ( $dev_mode ) {
+			wp_enqueue_style(
+				'telica-style',
+				$dist_uri . '/assets/css/style.css',
+				array(),
+				$version
+			);
+
+			wp_enqueue_script(
+				'telica-main',
+				$dist_uri . '/assets/js/main.js',
+				array(),
+				$version,
+				true
+			);
+
+		} else {
+			$manifest_path = $dist_path . '/manifest.json';
+
+			if ( file_exists( $manifest_path ) ) {
+				$manifest = json_decode( file_get_contents( $manifest_path ), true );
+				$css_file = null;
+				$js_file  = null;
+
+				foreach ( $manifest as $entry ) {
+					if ( isset( $entry['file'] ) && str_ends_with( $entry['file'], '.js' ) ) {
+						$js_file = $entry['file'];
+					}
+
+					if ( isset( $entry['css'] ) && ! empty( $entry['css'][0] ) ) {
+						$css_file = $entry['css'][0];
+					}
+				}
+
+				if ( $css_file ) {
+					wp_enqueue_style(
+						'telica-style',
+						$dist_uri . '/' . $css_file,
+						array(),
+						$version
+					);
+				}
+
+				if ( $js_file ) {
+					wp_enqueue_script(
+						'telica-main',
+						$dist_uri . '/' . $js_file,
+						array(),
+						$version,
+						true
+					);
+				}
+			}
+		}
+  }
 endif;
-add_action( 'wp_enqueue_scripts', 'telica_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'telica_enqueue_assets' );
 
 
 function telica_register_block_patterns() {
@@ -130,22 +193,13 @@ function telica_register_block_patterns() {
 }
 add_action( 'init', 'telica_register_block_patterns' );
 
-function telica_enqueue_assets() {
-    $path = get_template_directory() . '/assets/css/components.css';
-    $uri  = get_template_directory_uri() . '/assets/css/components.css';
+// function telica_enqueue_assets() {
+//     $path = get_template_directory() . '/assets/css/components.css';
+//     $uri  = get_template_directory_uri() . '/assets/css/components.css';
 
-    if ( file_exists( $path ) ) {
-        $ver = filemtime( $path );
-        wp_enqueue_style( 'telica-components', $uri, array(), $ver );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'telica_enqueue_assets' );
-
-// Load styles inside the block editor (Gutenberg)
-function telica_enqueue_editor_assets() {
-    // Ensure theme supports editor styles
-    add_theme_support( 'editor-styles' );
-    // Reuse the same components stylesheet in the editor
-    add_editor_style( 'assets/css/components.css' );
-}
-add_action( 'after_setup_theme', 'telica_enqueue_editor_assets' );
+//     if ( file_exists( $path ) ) {
+//         $ver = filemtime( $path );
+//         wp_enqueue_style( 'telica-components', $uri, array(), $ver );
+//     }
+// }
+// add_action( 'wp_enqueue_scripts', 'telica_enqueue_assets' );
