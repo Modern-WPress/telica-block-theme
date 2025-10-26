@@ -1,15 +1,43 @@
 <!-- wp:template-part {"slug":"header"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"default"}} -->
+<!-- wp:group {"tagName":"main","align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
 <main
-  class="wp-block-group"
+  class="wp-block-group alignwide"
   style="
-    padding-top: var(--wp--preset--spacing--50);
+    padding-top: var(--wp--preset--spacing--70);
     padding-right: var(--wp--preset--spacing--50);
-    padding-bottom: var(--wp--preset--spacing--50);
+    padding-bottom: var(--wp--preset--spacing--70);
     padding-left: var(--wp--preset--spacing--50);
+    text-align: center;
   ">
-  <!-- wp:pattern {"slug":"telica/hidden-404"} /-->
+  <!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"clamp(2rem, 6vw, 4rem)"}}} -->
+  <h1
+    class="wp-block-heading"
+    style="font-size: clamp(2rem, 6vw, 4rem); text-align: center">
+    Página no encontrada
+  </h1>
+  <!-- /wp:heading -->
+
+  <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.2rem"}}} -->
+  <p style="text-align: center; font-size: 1.2rem">
+    Parece que la página que buscas no existe o ha sido movida. No te preocupes,
+    te ayudaremos a volver a la página principal.
+  </p>
+  <!-- /wp:paragraph -->
+
+  <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"2rem"}}}} -->
+  <div class="wp-block-buttons" style="margin-top: 2rem">
+    <!-- wp:button {"textAlign":"center","style":{"border":{"radius":"4px"}},"backgroundColor":"primary","textColor":"background"} -->
+    <div class="wp-block-button">
+      <a
+        class="wp-block-button__link has-background-color has-primary-background-color has-text-align-center wp-element-button"
+        href="<?php echo esc_url( home_url( '/' ) ); ?>">
+        Volver al inicio
+      </a>
+    </div>
+    <!-- /wp:button -->
+  </div>
+  <!-- /wp:buttons -->
 </main>
 <!-- /wp:group -->
 
